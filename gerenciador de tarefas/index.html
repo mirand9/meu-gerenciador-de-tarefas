@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Tarefas</title>
     <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href=".//css/style.css">
 </head>
 <body>
     <h1>Gerenciador de Tarefas</h1>
 
-    <form id="form-tarefa">
+    <button id="btn-nova-tarefa" type="button">Nova tarefa</button>
+
+    <form id="form-tarefa" class="oculto">
+        <div id="modal-header">
+        <span>Nova Tarefa</span>
+       
+        </div>
+        </div>
         <div> 
             <label for ="tarefa">Descrição da Tarefa:</label>
             <input type="text" id="tarefa" name="tarefa" required>
@@ -40,6 +48,8 @@
                 <option value="baixa">Baixa</option>
             </select>
         </div>
+
+        
 
        <div>
             <button type="submit">Adicionar Tarefa</button>
