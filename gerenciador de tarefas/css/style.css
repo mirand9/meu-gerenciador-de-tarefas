@@ -61,7 +61,7 @@ body {
 }
 
 .janela-tarefa .card-header {
-    background-color: #cecece;
+    background-color: #a1a1a1;
     padding: 8px 12px;
     cursor: move; 
     border-top-left-radius: 5px;
@@ -89,11 +89,15 @@ body {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 60px;
     cursor: pointer;
     border-radius: 4px;
     margin-bottom: 30px;
+    position: fixed;
     bottom: 20px;
     left: 20px; 
-    
+
+}
+#btn-nova-tarefa:hover {
+    background-color: #00b609d7;
 }
