@@ -1,7 +1,32 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+#sidebar {
+    width: 260px;
+    height: 100vh;
+    background-color: #f0f0f0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+#conteudo-principal {
+    margin-left: 260px;
+    padding: 20px;
+    width: calc(100% - 260px);
+    box-sizing: border-box;
+}
+
 .oculto { 
     display: none;
 }
-
 
 #form-tarefa { 
     border-radius: 10px;
@@ -9,11 +34,10 @@
     border-top-right-radius: 5px;
     border: 1px solid rgb(0, 0, 0);
     width: 320px;
-    
     position: fixed;
     top: 50%;
     left: 50%;  
-    transform: translate(50%, 50%);
+    transform: translate(-50%, -50%);
     background-color: rgb(255, 255, 255);    
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -54,10 +78,22 @@
 
 #indicadores {
     display: flex;
-    justify-content: space-around;
-    background-color: #f4f4f4;    
-    padding: 15px;
-    margin-top: 650px;
-    border-radius: 8px;
+    flex-direction: column;
+    background-color: transparent;    
+    padding: 0;
+    margin-top: 0;
+    border-radius: 0;
 }
 
+#btn-nova-tarefa {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    bottom: 20px;
+    left: 20px; 
+    
+}
