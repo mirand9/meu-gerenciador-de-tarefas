@@ -101,3 +101,70 @@ body {
 #btn-nova-tarefa:hover {
     background-color: #00b609d7;
 }
+
+#calendario-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 60px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 400px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px; 
+}
+
+#calendario-btn:hover {
+    background-color: #d400ffd7;
+}
+
+#indicadores-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 60px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 350px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px; 
+}
+
+#indicadores-btn:hover {
+    background-color: #d400ffd7;
+}
+
+#filtros-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 60px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 200px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px; 
+}
+#filtros-btn:hover {
+    background-color: #d400ffd7;
+}
+
+#config-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 60px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 50px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px; 
+}
+
+#config-btn:hover {
+    background-color: #d400ffd7;
+}
