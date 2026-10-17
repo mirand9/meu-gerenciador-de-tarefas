@@ -1,97 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" data-tema="claro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="./css/style.css">
     <script src="js/script.js" defer></script>
-    <link rel="stylesheet" href=".//css/style.css">
 </head>
 <body>
     <aside id="sidebar">
-        <section  id="sidebar-content"></section>
-        <button type="button"  id="calendario-btn">Calendário</button>
-        <button type="button" id="indicadores-btn">Indicadores</button>
-        <button type="button" id="filtros-btn">Filtros</button>
-        <button type="button" id="config-btn">Configurações</button>
+        <nav id="sidebar-content" aria-label="Menu principal">
+            <button type="button" id="tarefas-btn" class="aba" aria-current="page">Tarefas</button>
+            <button type="button" id="calendario-btn" class="aba">Calendário</button>
+            <button type="button" id="indicadores-btn" class="aba">Indicadores</button>
+            <button type="button" id="filtros-btn" class="aba" aria-expanded="false" aria-controls="filtros">Filtros</button>
 
-        <section id="filtros">
-            <h2>Filtros</h2>
-            <label for="filtro-categoria">Categoria:</label>
-            <select id="filtro-categoria" name="filtro-categoria">
-                <option value="">Todas</option>
-                <option value="trabalho">Trabalho</option>
-                <option value="pessoal">Pessoal</option>
-            </select>
-
-            <label for="filtro-prioridade">Prioridade:</label>
-            <select id="filtro-prioridade" name="filtro-prioridade">
-                <option value="">Todas</option>
-                <option value="alta">Alta</option>
-                <option value="media">Média</option>
-                <option value="baixa">Baixa</option>
-            </select>
-        </section>
-    </aside>
-
-    <div id="conteudo-principal">
-        <h1>Gerenciador de Tarefas</h1>
-
-        <button id="btn-nova-tarefa" type="button">Nova tarefa</button>
-
-        <form id="form-tarefa" class="oculto">
-            <div id="modal-header">
-            <span>Nova Tarefa</span>
-           
-            </div>
-            <div> 
-                <label for ="tarefa">Descrição da Tarefa:</label>
-                <input type="text" id="tarefa" name="tarefa" required>
-            </div>
-            
-            <div> 
-                <label for ="categoria">Categoria:</label>
-                <select id="categoria" name="categoria" required>
-                    <option value="">Selecione</option>
+            <section id="filtros" hidden>
+                <label for="filtro-categoria">Categoria</label>
+                <select id="filtro-categoria">
+                    <option value="">Todas</option>
                     <option value="trabalho">Trabalho</option>
                     <option value="pessoal">Pessoal</option>
                 </select>
-            </div>
-
-            <div>
-                <label for="data">Data de Conclusão:</label>
-                <input type="date" id="data" name="data" required>
-                
-            </div>
-
-            <div>
-                <label for="prioridade">Prioridade:</label>
-                <select id="prioridade" name="prioridade" required>
-                    <option value="">Selecione</option>
+                <label for="filtro-prioridade">Prioridade</label>
+                <select id="filtro-prioridade">
+                    <option value="">Todas</option>
                     <option value="alta">Alta</option>
                     <option value="media">Média</option>
                     <option value="baixa">Baixa</option>
                 </select>
-            </div>
+            </section>
 
-           <div>
-                <button type="submit">Adicionar Tarefa</button>
-            </div>
-        </form> 
+            <button type="button" id="config-btn" class="aba">Configurações</button>
+        </nav>
+    </aside>
 
-        <section>
-            <h2>Tarefas Adicionadas</h2>
-            <ul id="lista-tarefas">
-                <p id="sem-tarefas">Nenhuma tarefa adicionada.</p>
-            </ul>
+    <main id="conteudo-principal">
+        <header>
+            <h1>Gerenciador de Tarefas</h1>
+            <button id="btn-nova-tarefa" type="button">Nova tarefa</button>
+        </header>
+
+        <section id="view-tarefas" class="view">
+            <h2>Tarefas adicionadas</h2>
+            <ul id="lista-tarefas"></ul>
+            <h2>Tarefas concluídas</h2>
+            <ul id="lista-tarefas-concluidas"></ul>
         </section>
 
-        <section>
-            <h2> Tarefas Concluidas</h2>
-            <ul id="lista-tarefas-concluidas">
-                <p id="sem-tarefas-concluidas">Nenhuma tarefa concluída.</p>
-            </ul>
+        <section id="view-calendario" class="view" hidden>
+            <h2>Calendário</h2>
+            <div class="cal-topo">
+                <button type="button" id="mes-anterior" aria-label="Mês anterior">&lsaquo;</button>
+                <strong id="cal-titulo"></strong>
+                <button type="button" id="mes-seguinte" aria-label="Próximo mês">&rsaquo;</button>
+            </div>
+            <div id="cal-grade" class="cal-grade"></div>
+            <h3 id="cal-dia-titulo">Selecione um dia</h3>
+            <ul id="cal-tarefas"></ul>
         </section>
-    </div>
+
+        <section id="view-indicadores" class="view" hidden>
+            <h2>Indicadores</h2>
+            <div id="indicadores" class="cartoes"></div>
+            <h3>Por prioridade</h3>
+            <div id="barras-prioridade"></div>
+            <h3>Por categoria</h3>
+            <div id="barras-categoria"></div>
+        </section>
+
+        <section id="view-config" class="view" hidden>
+            <h2>Configurações</h2>
+            <label for="cfg-tema">Tema</label>
+            <select id="cfg-tema">
+                <option value="claro">Claro</option>
+                <option value="escuro">Escuro</option>
+            </select>
+            <div class="acoes">
+                <button type="button" id="limpar-concluidas" class="secundario">Remover tarefas concluídas</button>
+                <button type="button" id="limpar-tudo" class="perigo">Apagar todas as tarefas</button>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="dialogo-tarefa">
+        <form id="form-tarefa" method="dialog">
+            <div id="modal-header">
+                <h2>Nova tarefa</h2>
+                <button type="button" id="btn-fechar-form" aria-label="Fechar">&times;</button>
+            </div>
+            <label for="tarefa">Descrição</label>
+            <input type="text" id="tarefa" required autocomplete="off">
+            <label for="categoria">Categoria</label>
+            <select id="categoria" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="trabalho">Trabalho</option>
+                <option value="pessoal">Pessoal</option>
+            </select>
+            <label for="data">Data de conclusão</label>
+            <input type="date" id="data" required>
+            <label for="prioridade">Prioridade</label>
+            <select id="prioridade" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="alta">Alta</option>
+                <option value="media">Média</option>
+                <option value="baixa">Baixa</option>
+            </select>
+            <button type="submit">Adicionar tarefa</button>
+        </form>
+    </dialog>
 </body>
 </html>
